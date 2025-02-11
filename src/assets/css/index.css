@@ -42,7 +42,29 @@ html {
   overflow-x: hidden; /* Previene el desplazamiento horizontal */
 }
 
-/* Hero Section */
+/* mobile version */
+
+/* Estilos generales para dispositivos grandes (escritorio) */
+body {
+  font-size: 16px;
+  margin: 20px;
+}
+
+/* Estilos para tablets en orientación vertical y dispositivos con pantallas medianas */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+    margin: 15px;
+  }
+}
+
+/* Estilos para teléfonos móviles y dispositivos con pantallas pequeñas */
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 12px;
+    margin: 10px;
+  }
+}
 
 /* Hero Section */
 .hero_section {
