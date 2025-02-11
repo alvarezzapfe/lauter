@@ -156,31 +156,6 @@ const Login = () => {
               </p>
             </div>
           </div>
-          <div className="row mt-4">
-            <div className="col text-center">
-              <p className="footer-credits small">
-                Desarrollado{" "}
-                <a
-                  href="https://www.linkedin.com/in/luis-armando-alvarez-zapfe-201217137/?originalSubdomain=mx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-link"
-                >
-                  Internamente
-                </a>{" "}
-                con{" "}
-                <a
-                  href="https://reactjs.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-link"
-                >
-                  React.js
-                </a>{" "}
-                <i className="fab fa-react footer-icon"></i>
-              </p>
-            </div>
-          </div>
         </div>
       </footer>
     </div>

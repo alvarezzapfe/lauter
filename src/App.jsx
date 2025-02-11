@@ -126,7 +126,7 @@ const Home = () => {
               <p className="about-text">
                 Nuestra misión es revolucionar el acceso a crédito con
                 soluciones{" "}
-                <strong>simples, personalizadas y transparentes</strong>
+                <strong>simples, personalizadas y transparentes </strong>
                 para pequeñas y medianas empresas.
               </p>
               <p className="about-text">
@@ -321,8 +321,7 @@ const Home = () => {
         <div className="container expanded-section position-relative">
           <h2 className="column-title mb-5">Nuestra Propuesta de Valor</h2>
           <p className="section-text">
-            Simplificamos el proceso de onboarding, KYC, & due diligence para
-            mejorar la experiencia de Crédito PyME.
+            Simplificamos el proceso de Crédito PyME.
           </p>
 
           {/* Rayo eléctrico */}
@@ -548,7 +547,7 @@ const Home = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="productos" className="footer-link">
+                  <a href="#productos" className="footer-link">
                     Productos
                   </a>
                 </li>

@@ -210,8 +210,8 @@ const Solicitud = () => {
       case 0:
         return (
           <div className="start-box">
-            <h2>Bienvenido</h2>
-            <p>Haz clic en el botón para iniciar tu solicitud de crédito.</p>
+            <h1>Bienvenido</h1>
+            <p>Haz clic en el botón para iniciar tu solicitud de crédito</p>
             <button
               className="start-button"
               onClick={() => setStep(1)}
@@ -604,31 +604,6 @@ const Solicitud = () => {
           </div>
 
           {/* Créditos Finales */}
-          <div className="row mt-4">
-            <div className="col text-center">
-              <p className="footer-credits small">
-                Desarrollado por{" "}
-                <a
-                  href="https://www.linkedin.com/in/luis-armando-alvarez-zapfe-201217137/?originalSubdomain=mx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-link"
-                >
-                  Luis Armando Alvarez Zapfe
-                </a>{" "}
-                con{" "}
-                <a
-                  href="https://reactjs.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-link"
-                >
-                  React.js
-                </a>{" "}
-                <i className="fab fa-react footer-icon"></i>
-              </p>
-            </div>
-          </div>
         </div>
       </footer>
     </div>
