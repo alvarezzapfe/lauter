@@ -1,0 +1,1026 @@
+/* =================== GLOBAL TYPOGRAPHY =================== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+  color: #001f3f;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Previene el desplazamiento horizontal */
+}
+
+/* Fuente y color global para títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+  color: #003b80; /* Azul profundo */
+}
+
+/* Fuente y color global para subtítulos */
+.section-subtitle {
+  font-size: 1.8rem;
+  color: #4e6a82; /* Azul oscuro suave */
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  max-width: 70%;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/*  Evitar desbordamiento en versiones mobiles   */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Previene el desplazamiento horizontal */
+}
+
+/* Hero Section */
+
+/* Hero Section */
+.hero_section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+
+.hero_content {
+  z-index: 2;
+  max-width: 900px;
+}
+
+.hero_title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #003b80;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+.hero_subtitle {
+  font-size: 1.5rem;
+  color: #1e2a38;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.highlight {
+  color: #16c79a;
+  font-weight: bold;
+}
+
+.green-highlight {
+  color: #16c79a;
+  font-weight: bold;
+}
+
+/* Botones */
+.hero_cta {
+  margin-top: 1rem;
+}
+
+.hero_btn {
+  padding: 14px 40px;
+  font-size: 1.3rem;
+  border-radius: 30px;
+  font-family: "Nunito", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero_btn.primary {
+  background-color: #16c79a;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(22, 199, 154, 0.3);
+}
+
+.hero_btn.primary:hover {
+  background-color: #0aa676;
+}
+
+.hero_btn.secondary {
+  background-color: transparent;
+  border: 2px solid #16c79a;
+  color: #16c79a;
+  padding: 14px 40px;
+  font-size: 1.3rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.hero_btn.secondary:hover {
+  background-color: #16c79a;
+  color: #ffffff;
+}
+
+/* Fondo con Nodos y Líneas */
+.hero_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.node {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #16c79a;
+  border-radius: 50%;
+  animation: floatNode 5s infinite alternate ease-in-out;
+}
+
+.node-1 {
+  top: 20%;
+  left: 30%;
+  animation-delay: 0s;
+}
+
+.node-2 {
+  top: 70%;
+  left: 60%;
+  animation-delay: 2s;
+}
+
+.line {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: rgba(0, 59, 128, 0.1);
+  animation: moveLine 6s infinite linear;
+}
+
+.line-1 {
+  left: 20%;
+}
+
+.line-2 {
+  left: 70%;
+  animation-delay: 3s;
+}
+
+@keyframes floatNode {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes moveLine {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+/* Botón general */
+.btn-primary {
+  align-items: center;
+  background: linear-gradient(90deg, #16c79a, #13a67f);
+  border: none;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(22, 199, 154, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #13a67f, #16c79a);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(22, 199, 154, 0.5);
+}
+
+/* =================== SECCIONES GENERALES =================== */
+.section-container {
+  background-color: #ffffff;
+  padding: 140px 0; /* Aumentamos el tamaño vertical */
+  color: #003b80;
+}
+
+.section-title {
+  font-size: 3rem; /* Aumentamos el tamaño del título */
+  font-weight: bold;
+  color: #003b80; /* Azul marino más oscuro */
+  text-align: center;
+  font-family: "nunito", sans-serif;
+}
+
+/* Ajustar la letra y el tamaño de las áreas */
+.section-text {
+  font-size: 1.4rem; /* Hacemos la letra más grande */
+  color: #003b80; /* Azul oscuro más visible */
+  text-align: center;
+  line-height: 1.8; /* Más espaciado para mejor lectura */
+  max-width: 80%; /* Ampliamos el área del contenido */
+  margin: 0 auto;
+  font-family: "nunito", sans-serif;
+}
+
+/* =================== ABOUT SECTION (MODERNO Y PROFESIONAL) =================== */
+.about-section {
+  background-color: #ffffff; /* Fondo blanco limpio */
+  padding: 120px 0;
+  color: #003b80;
+  text-align: center;
+}
+
+/* Título Principal */
+.about-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #003b80; /* Azul marino oscuro */
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+/* Subtítulo con efecto de animación */
+.about-subtitle {
+  font-size: 1.8rem;
+  color: #003b80; /* Verde menta brillante */
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* Contenedor del texto */
+.about-text-container {
+  text-align: left;
+  padding: 20px;
+}
+
+/* Párrafos */
+.about-text {
+  font-size: 1.3rem;
+  color: #1e2a38;
+  font-family: "Lato", sans-serif;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* Botón con efecto moderno */
+.about-btn {
+  background: linear-gradient(90deg, #16c79a, #13a67f);
+  border: none;
+  padding: 14px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  color: white;
+  box-shadow: 0 5px 15px rgba(22, 199, 154, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.about-btn:hover {
+  background: linear-gradient(90deg, #13a67f, #16c79a);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(22, 199, 154, 0.5);
+}
+
+/* Contenedor de la imagen */
+.about-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor con efecto de sombra y flotación */
+.about-image-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #dff3f5, #bfe4e7);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out;
+}
+
+.about-image-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen */
+.about-image {
+  max-width: 90%;
+  border-radius: 15px;
+}
+
+/* =================== ANIMACIONES =================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =================== RESPONSIVE DESIGN =================== */
+@media (max-width: 992px) {
+  .about-section {
+    padding: 100px 0;
+  }
+
+  .about-title {
+    font-size: 2.8rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.6rem;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-image-wrapper {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 80px 0;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .about-text-container {
+    text-align: center;
+  }
+
+  .about-image {
+    max-width: 80%;
+  }
+}
+
+/* =================== PRODUCTOS SECTION (Igual a Modelo de Negocio) =================== */
+.productos-card {
+  background: linear-gradient(
+    145deg,
+    #dff3f5,
+    #bfe4e7
+  ); /* Mismos tonos azul verdoso */
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  height: 280px; /* Mismo tamaño */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.productos-card:hover {
+  transform: scale(1.025);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.productos-card .icono {
+  font-size: 3rem;
+  color: #16c79a; /* Verde menta brillante */
+}
+
+.productos-card h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #003b80; /* Azul profundo */
+}
+
+.productos-card ul {
+  list-style: disc;
+  padding-left: 20px;
+  color: #1e2a38;
+  font-size: 1rem;
+}
+
+/* =================== RESPONSIVE FIXES =================== */
+@media (max-width: 992px) {
+  .section-container {
+    padding: 100px 0; /* Un poco menos en pantallas medianas */
+  }
+
+  .section-text {
+    text-align: center;
+    max-width: 90%;
+    font-size: 1.3rem; /* Un poco más grande */
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section img {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* =================== SECCIÓN COLUMNAS (MEJORADA) =================== */
+#columns {
+  background: #ffffff; /* Fondo blanco */
+  padding: 100px 40px; /* Ajuste proporcional */
+  color: #001f3f;
+  position: relative;
+}
+
+/* =================== COLUMNAS - TÍTULOS =================== */
+
+/* Estilo del título principal "Nuestra Propuesta de Valor" */
+.column-title {
+  font-size: 3.1rem; /* Tamaño más grande */
+  font-weight: bold;
+  color: #003b80; /* Azul profundo */
+  font-family: "Montserrat", sans-serif; /* Tipografía elegante */
+  text-align: center;
+}
+
+/* Estilo del subtítulo "Eliminar fricciones..." */
+.column-subtitle {
+  font-size: 1.5rem; /* Un poco más pequeño */
+  font-weight: 600;
+  color: #16c79a; /* Verde brillante */
+  font-family: "Lato", sans-serif; /* Fuente más amigable */
+  text-align: center;
+}
+
+/* Contenedor de las cajas */
+.column-card {
+  background: linear-gradient(
+    145deg,
+    #dff3f5,
+    #bfe4e7
+  ); /* Mismo tono azul verdoso */
+  border: none;
+  border-radius: 15px; /* Igual a Productos y Modelo */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Resaltar en hover */
+.column-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Títulos dentro de las cajas */
+.column-card h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #003b80; /* Azul profundo, igual que Productos */
+  font-family: "nunito", sans-serif;
+}
+
+/* Texto dentro de las cajas */
+.column-card p {
+  font-size: 1rem;
+  color: #1e2a38; /* Mismo tono que Productos */
+  font-family: "Lato", sans-serif;
+  line-height: 1.6;
+}
+
+/* Iconos dentro de las cajas */
+.column-card .fas {
+  font-size: 3rem;
+  color: #16c79a; /* Verde brillante igual que en Productos */
+  margin-bottom: 15px;
+}
+
+/* Círculo de numeración (Con Color Rosa) */
+.circle-enumeration {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f48fb1; /* Rosa (como en el diseño original) */
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+}
+
+/* =================== LÍNEA ELÉCTRICA =================== */
+.arrow-electric {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 88%;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    #16c79a 25%,
+    transparent 50%,
+    #f48fb1 75%
+  );
+  background-size: 100% 200%;
+  animation: electric-flow 2s infinite linear;
+  z-index: -1;
+}
+
+/* Animación de la línea eléctrica */
+@keyframes electric-flow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Resaltar efecto en hover */
+.column-card.highlight {
+  box-shadow: 0 0 20px 10px rgba(22, 199, 154, 0.5);
+  transform: scale(1.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* =================== RESPONSIVE FIXES =================== */
+@media (max-width: 992px) {
+  .column-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .column-card {
+    width: 100%;
+  }
+
+  .arrow-electric {
+    left: 20%;
+  }
+}
+
+/* =================== SECCIÓN cuadro comparativo =================== */
+
+.comparativo-section {
+  padding: 80px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.comparativo-title {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #003b80;
+  margin-bottom: 30px;
+}
+
+.comparativo-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.comparativo-table th,
+.comparativo-table td {
+  padding: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.comparativo-table th {
+  background-color: #16c79a;
+  color: white;
+  font-weight: bold;
+}
+
+.comparativo-table .highlight {
+  background-color: #003b80;
+  color: white;
+  font-weight: bold;
+}
+
+.sad-icon {
+  color: #ff4d4f;
+  font-size: 1.8rem;
+}
+
+.neutral-icon {
+  color: #ffc107;
+  font-size: 1.8rem;
+}
+
+.happy-icon {
+  color: #16c79a;
+  font-size: 1.8rem;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-box {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.popup-box p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.popup-box button {
+  background: #16c79a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-box button:hover {
+  background: #0aa676;
+}
+
+/* =================== SECCIÓN MODELO DE NEGOCIO =================== */
+.modelo-container {
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 150px 0; /* Hacer el área más grande */
+  color: #001f3f;
+}
+
+/* Título Principal */
+.modelo-title {
+  font-size: 3.5rem; /* Más grande */
+  font-weight: bold;
+  color: #003b80; /* Azul profundo */
+  font-family: "Montserrat", sans-serif; /* Fuente moderna */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Subtítulo - Asegurar visibilidad */
+.modelo-subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #16c79a; /* Verde brillante */
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+  opacity: 1 !important; /* Asegura que no esté oculto */
+  display: block; /* Asegura que esté visible */
+}
+
+.modelo-subtitle {
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+/* =================== CAJAS DEL MODELO (Mantenidas Igual) =================== */
+.modelo-card {
+  background: linear-gradient(145deg, #dff3f5, #bfe4e7);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  height: 280px; /* Ajustar tamaño */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modelo-card:hover {
+  transform: scale(1.025);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modelo-card .icono {
+  font-size: 3rem;
+  color: #16c79a; /* Verde menta brillante */
+}
+
+.modelo-card h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #003b80; /* Azul profundo */
+}
+
+.modelo-card ul {
+  list-style: disc;
+  padding-left: 20px;
+  color: #1e2a38;
+  font-size: 1rem;
+}
+
+/* =================== RESPONSIVE FIXES =================== */
+@media (max-width: 992px) {
+  .modelo-container {
+    padding: 120px 0;
+  }
+
+  .modelo-title {
+    font-size: 3rem; /* Ajustamos tamaño en pantallas medianas */
+  }
+
+  .modelo-subtitle {
+    font-size: 1.8rem;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modelo-container {
+    padding: 100px 0;
+  }
+
+  .modelo-title {
+    font-size: 2.5rem;
+  }
+
+  .modelo-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* FAQ Section */
+
+/* FAQ Section */
+.faq-section {
+  background-color: #ffffff;
+  padding: 150px 0;
+  color: #001f3f;
+}
+
+/* Título Principal del FAQ */
+.faq-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #003b80;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Subtítulo */
+.faq-subtitle {
+  font-size: 1.5rem;
+  font-weight: 200;
+  color: #003b80;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  max-width: 70%;
+  margin: 0 auto 50px;
+  line-height: 1.5;
+  opacity: 1 !important;
+  display: block;
+}
+
+.faq-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.faq-box {
+  background: linear-gradient(135deg, #16c79a, #13a67f);
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  width: 45%;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question h5 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0;
+  color: #ffffff;
+}
+
+.faq-question i {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-box.open .faq-question i {
+  transform: rotate(180deg);
+}
+
+/* Respuesta oculta por defecto */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease;
+  opacity: 0;
+  font-size: 1rem;
+  margin-top: 15px;
+  color: #e3f2fd;
+}
+
+.faq-answer.show {
+  max-height: 200px;
+  opacity: 1;
+}
+
+/* Animación suave de entrada */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-in-out;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sección Footer */
+
+.footer-section {
+  background: #ffffff; /* Fondo blanco */
+  color: #003b80; /* Azul marino */
+  padding: 80px 0;
+  font-size: 0.9rem;
+}
+
+.footer-section h5 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.footer-section a.footer-link {
+  color: #003b80; /* Azul marino */
+  text-decoration: none;
+}
+
+.footer-section a.footer-link:hover {
+  color: #16c79a; /* Verde fosforescente */
+  text-decoration: underline;
+}
+
+.footer-section p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.footer-line {
+  border-top: 1px solid #1b1f3b; /* Línea azul marino */
+  margin: 20px auto;
+  width: 100%; /* Línea de lado a lado */
+}
+
+.footer-credits {
+  font-size: 0.75rem; /* Letra más pequeña */
+  color: #003b80;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.footer-icon {
+  color: #61dafb; /* Color oficial de React */
+  font-size: 1.2rem;
+  margin-left: 5px; /* Espaciado para que no se pegue al texto */
+  vertical-align: middle;
+}
+
+/*   LOGO SMALL */
+
+/* Tamaño personalizado para el logotipo */
+.logo-small {
+  width: 40px; /* Cambia el tamaño según lo necesario */
+  height: auto; /* Mantén la proporción de aspecto */
+  margin-top: 10px; /* Espaciado opcional */
+  transition: transform 0.2s ease-in-out; /* Para animación */
+}
+
+/* Efecto hover para el logotipo */
+.logo-small:hover {
+  transform: scale(1.5); /* Aumenta ligeramente el tamaño al pasar el mouse */
+}
+
+@media (max-width: 768px) {
+  .logo-small {
+    width: 80px; /* Más pequeño en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-small {
+    width: 60px; /* Aún más pequeño en pantallas muy pequeñas */
+  }
+}
+
+/*   AOS   */
+/* Animaciones de entrada */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-aos="fade-left"] {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-aos="fade-left"].aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+[data-aos="fade-right"] {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-aos="fade-right"].aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+}
