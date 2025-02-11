@@ -50,6 +50,7 @@ const Home = () => {
       }
     });
   };
+
   const [popup, setPopup] = useState({ open: false, message: "" });
 
   const handleCellClick = (message) => {
@@ -153,7 +154,7 @@ const Home = () => {
       {/* Sección Productos */}
       <section id="productos" className="section-container productos-section">
         <div className="container">
-          <h2 className="section-title">Nuestros Penes frondosos</h2>
+          <h2 className="section-title">Nuestros Productos</h2>
           <p className="section-text">
             Descubre nuestras soluciones financieras diseñadas para impulsar a
             tu empresa.
