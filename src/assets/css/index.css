@@ -769,46 +769,44 @@ body {
 /*   comparativo seccion para mobiles  */
 
 /* =================== RESPONSIVE FIXES =================== */
+/* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
-  .comparativo-title {
-    font-size: 2rem;
+  .comparativo-table,
+  .comparativo-table thead,
+  .comparativo-table tbody,
+  .comparativo-table th,
+  .comparativo-table td,
+  .comparativo-table tr {
+    display: block;
+  }
+
+  .comparativo-table thead tr {
+    display: none;
+  }
+
+  .comparativo-table tr {
     margin-bottom: 15px;
   }
 
-  .comparativo-table th,
   .comparativo-table td {
-    font-size: 0.9rem;
-    padding: 10px;
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
   }
 
-  .popup-box p {
-    font-size: 0.9rem;
-  }
-
-  .popup-box button {
-    font-size: 0.9rem;
-    padding: 6px 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .comparativo-title {
-    font-size: 1.8rem;
-  }
-
-  .comparativo-table th,
-  .comparativo-table td {
-    font-size: 0.8rem;
-    padding: 8px;
-  }
-
-  .popup-box {
-    padding: 15px;
-  }
-
-  .popup-box button {
-    font-size: 0.8rem;
-    padding: 5px 10px;
+  .comparativo-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+    background-color: #f0f0f0;
+    height: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
   }
 }
 
