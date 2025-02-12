@@ -234,7 +234,7 @@ body {
 /* Ajustes para teléfonos móviles y dispositivos con pantallas pequeñas */
 @media screen and (max-width: 480px) {
   .hero_section {
-    height: 60vh; /* Reduce la altura al 60% de la ventana gráfica */
+    height: 40vh; /* Reduce la altura al 60% de la ventana gráfica */
     padding: 0 1rem;
   }
   .hero_title {
