@@ -220,7 +220,7 @@ body {
 /* Ajustes para tablets y dispositivos con pantallas medianas */
 @media screen and (max-width: 768px) {
   .hero_section {
-    height: 70vh; /* Reduce la altura al 70% de la ventana gráfica */
+    height: 40vh; /* Reduce la altura al 70% de la ventana gráfica */
   }
   .hero_title {
     font-size: 3rem;
