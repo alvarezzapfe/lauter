@@ -766,6 +766,52 @@ body {
   background: #0aa676;
 }
 
+/*   comparativo seccion para mobiles  */
+
+/* =================== RESPONSIVE FIXES =================== */
+@media (max-width: 768px) {
+  .comparativo-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .comparativo-table th,
+  .comparativo-table td {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .popup-box p {
+    font-size: 0.9rem;
+  }
+
+  .popup-box button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparativo-title {
+    font-size: 1.8rem;
+  }
+
+  .comparativo-table th,
+  .comparativo-table td {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  .popup-box {
+    padding: 15px;
+  }
+
+  .popup-box button {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}
+
 /* =================== SECCIÓN MODELO DE NEGOCIO =================== */
 .modelo-container {
   background-color: #ffffff; /* Fondo blanco */
