@@ -217,34 +217,53 @@ body {
     transform: translateY(-100%);
   }
 }
-/* Ajustes para tablets y dispositivos con pantallas medianas */
+
+/* Estilos específicos para dispositivos con ancho máximo de 768px (tablets y móviles) */
 @media screen and (max-width: 768px) {
   .hero_section {
-    height: 40vh; /* Reduce la altura al 70% de la ventana gráfica */
+    height: 70vh; /* Reduce la altura al 70% de la pantalla */
+    padding: 0 1rem; /* Reduce el padding lateral */
   }
+
   .hero_title {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Reduce el tamaño de la fuente del título */
+    margin-bottom: 1rem;
   }
+
   .hero_subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.2rem; /* Reduce el tamaño de la fuente del subtítulo */
+    margin-bottom: 1.5rem;
+  }
+
+  .hero_btn {
+    padding: 10px 30px; /* Ajusta el padding del botón */
+    font-size: 1rem; /* Reduce el tamaño de la fuente del botón */
   }
 }
 
-/* Ajustes para teléfonos móviles y dispositivos con pantallas pequeñas */
+/* Estilos específicos para dispositivos con ancho máximo de 480px (móviles pequeños) */
 @media screen and (max-width: 480px) {
   .hero_section {
-    height: 40vh; /* Reduce la altura al 60% de la ventana gráfica */
-    padding: 0 1rem;
+    height: 60vh; /* Reduce aún más la altura */
+    padding: 0 0.5rem; /* Reduce el padding lateral */
   }
+
   .hero_title {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Reduce el tamaño de la fuente del título */
+    margin-bottom: 0.5rem;
   }
+
   .hero_subtitle {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+    font-size: 1rem; /* Reduce el tamaño de la fuente del subtítulo */
+    margin-bottom: 1rem;
+  }
+
+  .hero_btn {
+    padding: 8px 20px; /* Ajusta el padding del botón */
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente del botón */
   }
 }
+
 /* Botón general */
 .btn-primary {
   align-items: center;
