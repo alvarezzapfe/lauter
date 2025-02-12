@@ -771,11 +771,6 @@ body {
 /* =================== RESPONSIVE FIXES =================== */
 /* Estilos para dispositivos móviles */
 @media (max-width: 768px) {
-  .comparativo-title {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
   .comparativo-table,
   .comparativo-table thead,
   .comparativo-table tbody,
@@ -783,41 +778,35 @@ body {
   .comparativo-table td,
   .comparativo-table tr {
     display: block;
-    width: 100%;
+  }
+
+  .comparativo-table thead tr {
+    display: none;
   }
 
   .comparativo-table tr {
     margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .comparativo-table th {
-    display: none;
   }
 
   .comparativo-table td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    font-size: 1rem;
-    border: none;
-    border-bottom: 1px solid #ddd;
+    text-align: right;
+    padding-left: 50%;
     position: relative;
   }
 
   .comparativo-table td::before {
     content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
     font-weight: bold;
-    color: #003b80;
-    flex: 1;
     text-align: left;
-  }
-
-  .comparativo-table td:last-child {
-    border-bottom: none;
+    background-color: #f0f0f0;
+    height: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
   }
 }
 
