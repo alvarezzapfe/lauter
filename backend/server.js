@@ -9,35 +9,33 @@ const solicitudesRoutes = require("./routes/solicitudesRoutes");
 
 dotenv.config();
 
-const app = express(); // ✅ Inicializamos Express
+const app = express();
 
 // ✅ Middleware
 app.use(cors());
-app.use(express.json()); // Ya maneja JSON, no se necesita `bodyParser.json()`
+app.use(express.json());
 
 // ✅ Definir rutas
 app.use("/api/auth", authRoutes);
 app.use("/api/solicitudes", solicitudesRoutes);
 
-// ✅ Sincronizar modelos con la base de datos
+// ✅ Sincronizar modelos con la base de datos y arrancar el servidor
 const iniciarServidor = async () => {
   try {
     await sequelize.authenticate();
-    console.log("✅ Conexión a MySQL establecida correctamente.");
+    console.log("✅ Conexión a Google Cloud SQL establecida correctamente.");
 
-    await sequelize.sync({ alter: true }); // 🔹 Mantiene los cambios sin borrar datos
+    await sequelize.sync({ alter: true });
     console.log("✅ Modelos sincronizados con la base de datos.");
 
-    // Configuración del puerto
     const PORT = process.env.PORT || 5001;
     app.listen(PORT, () => {
       console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
     });
   } catch (error) {
     console.error("❌ Error al conectar con la base de datos:", error);
-    process.exit(1); // Si hay un error, detiene la ejecución
+    process.exit(1);
   }
 };
 
-// ✅ Iniciar el servidor
 iniciarServidor();
