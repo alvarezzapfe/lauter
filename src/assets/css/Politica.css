@@ -1,0 +1,63 @@
+/* General Container Styles */
+.politica-container {
+  margin-top: 120px; /* Más espacio superior para separar del navbar */
+  margin-bottom: 50px;
+  padding: 20px;
+  background-color: #f9f9f9; /* Fondo claro para mejor legibilidad */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
+}
+
+/* Text Styles */
+.politica-container p {
+  text-align: justify;
+  line-height: 1.8; /* Más espacio entre líneas para facilitar la lectura */
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.politica-container h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-link {
+  color: #00aaff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  color: #007bff;
+}
+
+/* Navbar Styles */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 24px;
+  color: #00aaff !important;
+}
+
+.nav-link {
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 15px;
+}
+
+.nav-link:hover {
+  color: #00aaff;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}

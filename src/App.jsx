@@ -11,6 +11,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import Solicitud from "./solicitud";
 import Login from "./login";
 import Simulador from "./simulador";
+import TerminosCondiciones from "./TerminosCondiciones";
+import Politica from "./Politica";
 import Navbar from "./components/Navbar"; // Componente Navbar
 import logo from "./assets/images/logo1.png";
 import crowdlinkImg from "./assets/images/crowdlink.png";
@@ -643,9 +645,9 @@ const Home = () => {
 
           {/* Créditos Finales */}
           {/* Créditos Finales */}
-          <div className="row mt-4">
+          <div className="row mt-5">
             <div className="col text-center">
-              <p className="footer-credits small">
+              <p className="footer-credits small text-muted mb-2">
                 Desarrollado{" "}
                 <a
                   href="https://www.linkedin.com/in/luis-armando-alvarez-zapfe-201217137/?originalSubdomain=mx"
@@ -666,6 +668,17 @@ const Home = () => {
                 </a>{" "}
                 <i className="fab fa-react footer-icon"></i>
               </p>
+              <p className="footer-terms small text-muted">
+                Consulta nuestra{" "}
+                <a href="/politica-privacidad" className="footer-link">
+                  Política de Privacidad
+                </a>{" "}
+                y{" "}
+                <a href="/terminos-condiciones" className="footer-link">
+                  Términos y Condiciones
+                </a>
+                .
+              </p>
             </div>
           </div>
         </div>
@@ -681,6 +694,8 @@ const App = () => {
         {/* Rutas públicas */}
         <Route path="/" element={<Home />} />
         <Route path="/simulador" element={<Simulador />} />
+        <Route path="/terminos-condiciones" element={<TerminosCondiciones />} />
+        <Route path="/politica-privacidad" element={<Politica />} />
         <Route path="/login" element={<Login />} />
         <Route path="/solicitud" element={<Solicitud />} />
         <Route path="/access-denied" element={<AccessDenied />} />
