@@ -37,7 +37,7 @@ const Dash = () => {
     const fetchSolicitudes = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5001/api/solicitudes"
+          `${import.meta.env.VITE_API_URL}/solicitudes`
         );
         setSolicitudes(response.data);
       } catch (error) {

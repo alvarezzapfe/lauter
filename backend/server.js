@@ -30,6 +30,9 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/solicitudes", solicitudesRoutes);
 
+// Manejar solicitud preflight (OPTIONS)
+app.options("*", cors());
+
 // ✅ Sincronizar modelos con la base de datos y arrancar el servidor
 const iniciarServidor = async () => {
   try {
