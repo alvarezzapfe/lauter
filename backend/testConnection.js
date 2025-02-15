@@ -1,27 +1,26 @@
-const { Sequelize } = require("sequelize");
-
-// Configuración de conexión
-const sequelize = new Sequelize("tuki_db", "root", "Wuicha90$", {
-  host: "localhost",
-  dialect: "mysql",
-  logging: false, // Opcional: evita logs extensos
-});
+require("dotenv").config();
+const mysql = require("mysql2/promise");
 
 (async () => {
+  console.log("Intentando conectar a la base de datos...");
+  console.log("Configuración utilizada:");
+  console.log({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+  });
+
   try {
-    // Autenticar conexión
-    await sequelize.authenticate();
-    console.log("Conexión a MySQL exitosa.");
+    const connection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+    });
+    console.log("✅ Conexión exitosa a MySQL");
+    connection.end();
   } catch (error) {
-    // Mostrar error detallado
-    console.error("No se pudo conectar a MySQL:", error.message);
-  } finally {
-    try {
-      // Cerrar conexión
-      await sequelize.close();
-      console.log("Conexión cerrada.");
-    } catch (closeError) {
-      console.error("Error al cerrar la conexión:", closeError.message);
-    }
+    console.error("❌ Error en la conexión directa con mysql2:", error);
   }
 })();

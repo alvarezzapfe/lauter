@@ -17,12 +17,12 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // Manejar el inicio de sesión
+  const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5001/api";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Reiniciar el mensaje de error
+    setError("");
 
-    // Validar el correo electrónico y la contraseña en el frontend
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setError("Por favor, ingresa un correo electrónico válido.");
@@ -41,34 +41,26 @@ const Login = () => {
     });
 
     try {
-      // Agregar el rol activo (cliente o admin) al formData
-      const response = await axios.post(
-        "http://localhost:5001/api/auth/login",
-        {
-          ...formData,
-          role: activeTab, // "cliente" o "admin"
-        }
-      );
+      const response = await axios.post(`${BASE_URL}/auth/login`, {
+        ...formData,
+        role: activeTab,
+      });
 
       console.log("Respuesta del backend:", response.data);
 
       const { token, user } = response.data;
-
-      // Guardar token en localStorage
       localStorage.setItem("token", token);
 
-      // Redirigir al usuario según el rol
       if (user.role === "admin") {
-        navigate("/dash"); // Redirigir al dashboard admin
+        navigate("/dash");
       } else if (user.role === "user") {
-        navigate("/usuarios"); // Redirigir a la vista de usuarios
+        navigate("/usuarios");
       } else {
         setError("Rol no reconocido. Por favor, contacta al administrador.");
       }
     } catch (err) {
       const errorMsg =
-        err.response?.data?.message ||
-        "Error al iniciar sesión. Intenta nuevamente.";
+        err.response?.data?.message || "Error al iniciar sesión.";
       setError(errorMsg);
       console.error("Error en el login:", err);
     }
