@@ -4,6 +4,10 @@ import Navbar from "./components/Navbar";
 import "./assets/css/solicitud.css";
 import logo from "./assets/images/logo1.png";
 
+// Definimos la URL base de la API
+const BASE_URL =
+  process.env.REACT_APP_API_URL || "https://lauter-backend.vercel.app";
+
 const Solicitud = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -161,12 +165,9 @@ const Solicitud = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/solicitudes",
+        `${BASE_URL}/api/solicitudes`,
         dataToSend
       );
-
-      console.log("Respuesta del backend:", response.data);
-
       if (response.status === 200 || response.status === 201) {
         console.log("Solicitud enviada correctamente.");
         setStep(5); // Pasamos al paso 5 solo si se envió correctamente

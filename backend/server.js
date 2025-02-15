@@ -7,7 +7,7 @@ const sequelize = require("./config/database");
 const authRoutes = require("./routes/authRoutes");
 const solicitudesRoutes = require("./routes/solicitudesRoutes");
 
-require("dotenv").config();
+dotenv.config();
 
 console.log("DB_HOST:", process.env.DB_HOST);
 console.log("DB_NAME:", process.env.DB_NAME);
@@ -15,8 +15,15 @@ console.log("DB_USER:", process.env.DB_USER);
 
 const app = express();
 
-// ✅ Middleware
-app.use(cors());
+// ✅ Middleware CORS actualizado
+app.use(
+  cors({
+    origin: ["https://lauter.vercel.app"], // Solo tu dominio de producción
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // ✅ Definir rutas

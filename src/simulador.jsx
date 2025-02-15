@@ -126,8 +126,8 @@ const Simulador = () => {
             <div className="col text-center">
               <p className="small">
                 Infraestructura en Finanzas AI, Sociedad Anónima Promotora de
-                Inversión de Capital Variable, ("Tuki"), para su constitución y
-                operación con tal carácter, no requiere de autorización de la
+                Inversión de Capital Variable, ("Lauter"), para su constitución
+                y operación con tal carácter, no requiere de autorización de la
                 Secretaría de Hacienda y Crédito Público. Tuki ©. Todos los
                 derechos reservados. Prohibida la reproducción total o parcial
                 del contenido de este sitio. * Todo el análisis es generado con
