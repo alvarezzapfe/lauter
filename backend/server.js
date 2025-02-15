@@ -16,13 +16,12 @@ console.log("DB_USER:", process.env.DB_USER);
 const app = express();
 
 // ✅ Middleware CORS actualizado
-app.use(
-  cors({
-    origin: ["https://lauter.vercel.app"], // Solo tu dominio de producción
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://lauter.vercel.app");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 app.use(express.json());
 
