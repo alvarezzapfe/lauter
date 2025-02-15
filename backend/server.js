@@ -24,6 +24,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // Acepta datos codificados en URL
 
 // ✅ Definir rutas
 app.use("/api/auth", authRoutes);
