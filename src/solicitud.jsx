@@ -5,7 +5,7 @@ import "./assets/css/solicitud.css";
 import logo from "./assets/images/logo1.png";
 
 // Definimos la URL base de la API
-const BASE_URL = `${window.location.origin}/api`; // Ruta relativa
+const BASE_URL = "https://lauter.vercel.app/api";
 
 const Solicitud = () => {
   const [step, setStep] = useState(0);

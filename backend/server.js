@@ -15,14 +15,15 @@ console.log("DB_USER:", process.env.DB_USER);
 
 const app = express();
 
-// ✅ Middleware CORS actualizado
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://lauter.vercel.app");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
+// ✅ Middleware CORS actualizado (uso de opciones avanzadas)
+const corsOptions = {
+  origin: ["https://lauter.vercel.app"], // Permite solo tu frontend en producción
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // Permite cookies/sesiones si las usas
+};
 
+app.use(cors(corsOptions)); // Aplica CORS con las opciones avanzadas
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Acepta datos codificados en URL
 
@@ -30,8 +31,21 @@ app.use(express.urlencoded({ extended: true })); // Acepta datos codificados en 
 app.use("/api/auth", authRoutes);
 app.use("/api/solicitudes", solicitudesRoutes);
 
-// Manejar solicitud preflight (OPTIONS)
-app.options("*", cors());
+// Manejo de solicitud preflight (OPTIONS)
+app.options("*", cors(corsOptions));
+
+// ✅ Middleware para manejo de errores generales
+app.use((err, req, res, next) => {
+  console.error("❌ Error en el servidor:", err);
+  res
+    .status(500)
+    .json({ success: false, message: "Error interno del servidor" });
+});
+
+// ✅ Manejo de rutas no encontradas (404)
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: "Ruta no encontrada" });
+});
 
 // ✅ Sincronizar modelos con la base de datos y arrancar el servidor
 const iniciarServidor = async () => {
@@ -44,7 +58,7 @@ const iniciarServidor = async () => {
 
     const PORT = process.env.PORT || 5001;
     app.listen(PORT, () => {
-      console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+      console.log(`🚀 Servidor corriendo en producción en el puerto ${PORT}`);
     });
   } catch (error) {
     console.error("❌ Error al conectar con la base de datos:", error);
