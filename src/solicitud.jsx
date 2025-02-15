@@ -5,7 +5,7 @@ import "./assets/css/solicitud.css";
 import logo from "./assets/images/logo1.png";
 
 // Definimos la URL base de la API
-const BASE_URL = "https://lauter.vercel.app/api";
+const BASE_URL = `${window.location.origin}/api`; // Ruta relativa
 
 const Solicitud = () => {
   const [step, setStep] = useState(0);
@@ -163,10 +163,7 @@ const Solicitud = () => {
     console.log("Enviando datos al backend:", dataToSend);
 
     try {
-      const response = await axios.post(
-        `${BASE_URL}/api/solicitudes`,
-        dataToSend
-      );
+      const response = await axios.post(`${BASE_URL}/solicitudes`, dataToSend);
       if (response.status === 200 || response.status === 201) {
         console.log("Solicitud enviada correctamente.");
         setStep(5); // Pasamos al paso 5 solo si se envió correctamente
