@@ -37,7 +37,7 @@ const Dash = () => {
     const fetchSolicitudes = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/solicitudes`
+          "https://lauter-backend.vercel.app/api/solicitudes"
         );
         setSolicitudes(response.data);
       } catch (error) {
