@@ -34,6 +34,15 @@ app.use("/api/solicitudes", solicitudesRoutes);
 // Manejo de solicitud preflight (OPTIONS)
 app.options("*", cors(corsOptions));
 
+// Middleware para loggear cada solicitud
+app.use((req, res, next) => {
+  console.log("👉 Solicitud recibida:");
+  console.log(`  Método: ${req.method}`);
+  console.log(`  Ruta: ${req.originalUrl}`);
+  console.log(`  Headers:`, req.headers);
+  next();
+});
+
 // ✅ Middleware para manejo de errores generales
 app.use((err, req, res, next) => {
   console.error("❌ Error en el servidor:", err);
