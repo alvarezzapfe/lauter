@@ -17,7 +17,9 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5001/api";
+  // Cambiar la URL base para producción
+  const BASE_URL =
+    process.env.REACT_APP_API_URL || "https://lauter-backend.vercel.app/api";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
