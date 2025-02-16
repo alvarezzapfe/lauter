@@ -82,3 +82,5 @@ const iniciarServidor = async () => {
 };
 
 iniciarServidor();
+
+module.exports = app;
