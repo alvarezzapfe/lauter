@@ -2,10 +2,7 @@
   "builds": [
     {
       "src": "backend/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["node_modules/mysql2/**/*"]
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
