@@ -51,6 +51,12 @@ app.use((err, req, res, next) => {
     .json({ success: false, message: "Error interno del servidor" });
 });
 
+// Manejo de logs en solicitudes
+app.use((req, res, next) => {
+  console.log(`📥 Método: ${req.method}, Ruta: ${req.originalUrl}`);
+  next();
+});
+
 // ✅ Manejo de rutas no encontradas (404)
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Ruta no encontrada" });
