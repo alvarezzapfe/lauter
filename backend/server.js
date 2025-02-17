@@ -9,10 +9,15 @@ const solicitudesRoutes = require("./routes/solicitudesRoutes");
 
 dotenv.config();
 
+console.log("DB_HOST:", process.env.DB_HOST);
+console.log("DB_NAME:", process.env.DB_NAME);
+console.log("DB_USER:", process.env.DB_USER);
+
 const app = express();
 
+// ✅ Middleware CORS
 const corsOptions = {
-  origin: ["https://lauter.vercel.app"],
+  origin: ["https://lauter.vercel.app"], // Permite solo tu frontend en producción
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
@@ -22,30 +27,25 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Definir rutas
+// ✅ Definir rutas
 app.use("/api/auth", authRoutes);
 app.use("/api/solicitudes", solicitudesRoutes);
 
-// Manejo de rutas no encontradas
+// Manejo de solicitud preflight (OPTIONS)
+app.options("*", cors(corsOptions));
+
+// ✅ Middleware de errores generales
+app.use((err, req, res, next) => {
+  console.error("❌ Error en el servidor:", err);
+  res
+    .status(500)
+    .json({ success: false, message: "Error interno del servidor" });
+});
+
+// ✅ Manejo de rutas no encontradas (404)
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Ruta no encontrada" });
 });
 
-// Conectar a la base de datos
-const conectarDB = async () => {
-  try {
-    await sequelize.authenticate();
-    console.log("✅ Conexión a MySQL establecida correctamente.");
-    await sequelize.sync({ alter: true });
-    console.log("✅ Modelos sincronizados con la base de datos.");
-  } catch (error) {
-    console.error("❌ Error al conectar con la base de datos:", error);
-    process.exit(1);
-  }
-};
-
-conectarDB();
-
 // 🚀 **IMPORTANTE PARA VERCEL** 🚀
-// Vercel maneja automáticamente la ejecución del servidor.
-module.exports = app;
+// Eliminamos la sincronización automática en cada request.
