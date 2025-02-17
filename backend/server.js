@@ -27,14 +27,7 @@ app.use(cors(corsOptions)); // Aplica CORS con las opciones avanzadas
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Acepta datos codificados en URL
 
-// ✅ Definir rutas
-app.use("/api/auth", authRoutes);
-app.use("/api/solicitudes", solicitudesRoutes);
-
-// Manejo de solicitud preflight (OPTIONS)
-app.options("*", cors(corsOptions));
-
-// Middleware para loggear cada solicitud
+// ✅ Middleware para loggear cada solicitud
 app.use((req, res, next) => {
   console.log("👉 Solicitud recibida:");
   console.log(`  Método: ${req.method}`);
@@ -42,6 +35,13 @@ app.use((req, res, next) => {
   console.log(`  Headers:`, req.headers);
   next();
 });
+
+// ✅ Definir rutas
+app.use("/api/auth", authRoutes);
+app.use("/api/solicitudes", solicitudesRoutes);
+
+// Manejo de solicitud preflight (OPTIONS)
+app.options("*", cors(corsOptions));
 
 // ✅ Middleware para manejo de errores generales
 app.use((err, req, res, next) => {
@@ -51,36 +51,27 @@ app.use((err, req, res, next) => {
     .json({ success: false, message: "Error interno del servidor" });
 });
 
-// Manejo de logs en solicitudes
-app.use((req, res, next) => {
-  console.log(`📥 Método: ${req.method}, Ruta: ${req.originalUrl}`);
-  next();
-});
-
 // ✅ Manejo de rutas no encontradas (404)
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Ruta no encontrada" });
 });
 
-// ✅ Sincronizar modelos con la base de datos y arrancar el servidor
-const iniciarServidor = async () => {
+// ✅ Conectar con la base de datos
+const conectarDB = async () => {
   try {
     await sequelize.authenticate();
     console.log("✅ Conexión a Google Cloud SQL establecida correctamente.");
 
     await sequelize.sync({ alter: true });
     console.log("✅ Modelos sincronizados con la base de datos.");
-
-    const PORT = process.env.PORT || 5001;
-    app.listen(PORT, () => {
-      console.log(`🚀 Servidor corriendo en producción en el puerto ${PORT}`);
-    });
   } catch (error) {
     console.error("❌ Error al conectar con la base de datos:", error);
     process.exit(1);
   }
 };
 
-iniciarServidor();
+conectarDB();
 
+// 🚀 **IMPORTANTE PARA VERCEL** 🚀
+// En Vercel, no usamos app.listen() porque Vercel maneja automáticamente la ejecución del servidor.
 module.exports = app;
