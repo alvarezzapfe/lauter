@@ -38,6 +38,9 @@ const Home = () => {
       easing: "ease-out-cubic",
       once: true,
     });
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleScroll = () => {
@@ -53,6 +56,43 @@ const Home = () => {
     });
   };
 
+  const productos = [
+    {
+      title: "Crédito Simple",
+      details: ["Financiamiento flexible.", "Respaldado con garantías reales."],
+      extraInfo:
+        "Este crédito permite a las empresas acceder a liquidez con condiciones flexibles y competitivas.",
+      icon: "fas fa-hand-holding-usd",
+    },
+    {
+      title: "Arrendamiento Puro",
+      details: ["Ideal para activos.", "Beneficios fiscales atractivos."],
+      extraInfo:
+        "El arrendamiento puro es una solución financiera para adquirir activos sin afectar la liquidez de la empresa.",
+      icon: "fas fa-car",
+    },
+    {
+      title: "Deuda Convertible",
+      details: [
+        "Financiamiento híbrido.",
+        "Opción de convertir deuda en capital.",
+      ],
+      extraInfo:
+        "Este tipo de financiamiento permite flexibilidad, combinando deuda con la posibilidad de conversión en acciones.",
+      icon: "fas fa-exchange-alt",
+    }, // ✅ CERRAMOS EL ARRAY ANTES DEL `useState`
+  ];
+
+  const [flipped, setFlipped] = useState(Array(productos.length).fill(false)); // ✅ AHORA ESTÁ FUERA DEL ARRAY
+
+  const handleFlip = (index) => {
+    setFlipped((prev) => {
+      const newFlip = [...prev];
+      newFlip[index] = !newFlip[index];
+      return newFlip;
+    });
+  };
+
   const [popup, setPopup] = useState({ open: false, message: "" });
 
   const handleCellClick = (message) => {
@@ -60,11 +100,6 @@ const Home = () => {
   };
 
   const closePopup = () => setPopup({ open: false, message: "" });
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div>
@@ -153,6 +188,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/*    */}
       {/* Sección Productos */}
       <section id="productos" className="section-container productos-section">
         <div className="container">
@@ -162,42 +199,45 @@ const Home = () => {
             tu empresa.
           </p>
           <div className="row">
-            {[
-              {
-                title: "Crédito Simple",
-                details: [
-                  "Financiamiento flexible.",
-                  "Respaldado con garantías reales.",
-                ],
-                icon: "fas fa-hand-holding-usd",
-              },
-              {
-                title: "Arrendamiento Puro",
-                details: [
-                  "Ideal para activos.",
-                  "Beneficios fiscales atractivos.",
-                ],
-                icon: "fas fa-car",
-              },
-              {
-                title: "Deuda Convertible",
-                details: [
-                  "Financiamiento híbrido.",
-                  "Opción de convertir deuda en capital.",
-                ],
-                icon: "fas fa-exchange-alt",
-              },
-            ].map((producto, index) => (
+            {productos.map((producto, index) => (
               <div className="col-md-6 col-lg-4 mb-4" key={index}>
-                <div className="card productos-card">
-                  <div className="card-body text-center">
-                    <i className={`${producto.icon} icono`}></i>
-                    <h5 className="card-title mt-3">{producto.title}</h5>
-                    <ul className="card-text">
-                      {producto.details.map((detail, i) => (
-                        <li key={i}>{detail}</li>
-                      ))}
-                    </ul>
+                <div className={`flip-card ${flipped[index] ? "flipped" : ""}`}>
+                  <div className="flip-card-inner">
+                    {/* Lado Frontal */}
+                    <div className="flip-card-front">
+                      <div className="card productos-card">
+                        <div className="card-body text-center">
+                          <i className={`${producto.icon} icono`}></i>
+                          <h5 className="card-title mt-3">{producto.title}</h5>
+                          <ul className="card-text">
+                            {producto.details.map((detail, i) => (
+                              <li key={i}>{detail}</li>
+                            ))}
+                          </ul>
+                          <button
+                            className="btn-flip"
+                            onClick={() => handleFlip(index)}
+                          >
+                            Conoce
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Lado Trasero */}
+                    <div className="flip-card-back">
+                      <div className="card productos-card">
+                        <div className="card-body text-center">
+                          <h5 className="card-title mt-3">{producto.title}</h5>
+                          <p className="card-text">{producto.extraInfo}</p>
+                          <button
+                            className="btn-flip"
+                            onClick={() => handleFlip(index)}
+                          >
+                            Volver
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

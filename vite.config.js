@@ -1,13 +1,9 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react"; // Importa el plugin de React
-import path from "path";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  plugins: [react()], // Agrega el plugin de React
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-    extensions: [".js", ".jsx"], // Asegúrate de incluir las extensiones
+  plugins: [react()],
+  define: {
+    "process.env.NODE_ENV": JSON.stringify("development"),
   },
 });
