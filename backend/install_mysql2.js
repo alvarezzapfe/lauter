@@ -2,11 +2,13 @@ const { exec } = require("child_process");
 
 console.log("🚀 Instalando mysql2 manualmente en Vercel...");
 
-exec("npm install mysql2 --force", (error, stdout, stderr) => {
+exec("npm install mysql2", (error, stdout, stderr) => {
   if (error) {
-    console.error("❌ Error instalando mysql2:", error);
-    process.exit(1);
+    console.error(`❌ Error al instalar mysql2: ${error.message}`);
+    return;
   }
-  console.log("✅ mysql2 instalado correctamente:");
-  console.log(stdout);
+  if (stderr) {
+    console.error(`❗ Advertencia: ${stderr}`);
+  }
+  console.log(`✅ mysql2 instalado correctamente:\n${stdout}`);
 });

@@ -11,9 +11,6 @@
       "dest": "backend/server.js"
     }
   ],
-  "installCommand": "cd backend && npm install",
-  "buildCommand": "cd backend && npm run build",
-  "outputDirectory": "backend/dist",
-  "cleanUrls": true,
-  "includeFiles": ["backend/node_modules/mysql2/**/*"]
+  "installCommand": "cd backend && npm install && npm run postinstall",
+  "buildCommand": "cd backend && npm run build"
 }
