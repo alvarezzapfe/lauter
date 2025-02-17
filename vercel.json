@@ -14,5 +14,6 @@
   "installCommand": "cd backend && npm install",
   "buildCommand": "cd backend && npm run build",
   "outputDirectory": "backend/dist",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "includeFiles": ["backend/node_modules/mysql2/**/*"]
 }
