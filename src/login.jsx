@@ -18,7 +18,8 @@ const Login = () => {
   };
 
   // Cambiar la URL base para producción
-  const BASE_URL = import.meta.env.VITE_API_URL || "https://lauter.vercel.app";
+  const BASE_URL =
+    import.meta.env.VITE_API_URL || "https://lauter.vercel.app/api";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +43,7 @@ const Login = () => {
     });
 
     try {
-      const response = await axios.post(`${BASE_URL}/auth/login`, {
+      const response = await axios.post(`${BASE_URL}/login`, {
         ...formData,
         role: activeTab,
       });
