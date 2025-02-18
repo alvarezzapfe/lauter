@@ -9,15 +9,11 @@ const solicitudesRoutes = require("./routes/solicitudesRoutes");
 
 dotenv.config();
 
-console.log("DB_HOST:", process.env.DB_HOST);
-console.log("DB_NAME:", process.env.DB_NAME);
-console.log("DB_USER:", process.env.DB_USER);
-
 const app = express();
 
 // ✅ Middleware CORS
 const corsOptions = {
-  origin: ["https://lauter.vercel.app"], // Permite solo tu frontend en producción
+  origin: process.env.FRONTEND_URL || "https://lauter.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
@@ -31,21 +27,45 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/solicitudes", solicitudesRoutes);
 
-// Manejo de solicitud preflight (OPTIONS)
+// ✅ Manejo de solicitud preflight (OPTIONS)
 app.options("*", cors(corsOptions));
 
 // ✅ Middleware de errores generales
 app.use((err, req, res, next) => {
   console.error("❌ Error en el servidor:", err);
-  res
-    .status(500)
-    .json({ success: false, message: "Error interno del servidor" });
+  res.status(500).json({
+    success: false,
+    message: "Error interno del servidor",
+    error: err.message,
+  });
 });
 
 // ✅ Manejo de rutas no encontradas (404)
 app.use((req, res) => {
-  res.status(404).json({ success: false, message: "Ruta no encontrada" });
+  res.status(404).json({
+    success: false,
+    message: "Ruta no encontrada",
+    requestedUrl: req.originalUrl,
+  });
 });
 
-// 🚀 **IMPORTANTE PARA VERCEL** 🚀
-// Eliminamos la sincronización automática en cada request.
+// ✅ Sincronizar base de datos antes de iniciar el servidor
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("✅ Conectado a la base de datos");
+  })
+  .catch((err) => {
+    console.error("❌ Error al conectar a la base de datos:", err);
+  });
+
+// ✅ Para Vercel: Exportar `app`
+module.exports = app;
+
+// ✅ Iniciar servidor localmente solo si no estamos en Vercel
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+  });
+}
