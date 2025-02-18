@@ -26,6 +26,12 @@ import AccessDenied from "./AccessDenied"; // Ajusta la ruta según la estructur
 import { motion } from "framer-motion";
 import { FaRegSmile, FaRegFrown, FaRegClock } from "react-icons/fa";
 
+import { useCallback } from "react";
+
+import step2 from "./assets/images/step2.jpg"; // Sustituye con tu imagen real
+import step1 from "./assets/images/step1.jpg"; // Imagen 1
+import step3 from "./assets/images/step3.jpg"; // Imagen 3
+
 const Home = () => {
   const [activeCard, setActiveCard] = useState(-1); // Caja activa para animaciones
 
@@ -41,6 +47,10 @@ const Home = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const particlesInit = useCallback(async (engine) => {
+    await loadFull(engine);
   }, []);
 
   const handleScroll = () => {
@@ -104,22 +114,45 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      {/* Sección Hero */}
 
       <header id="hero" className="hero_section">
+        {/* Partículas de fondo */}
+
         <div className="hero_content">
-          <h2 className="hero_title" data-aos="fade-up">
+          {/* Título con animación */}
+          <motion.h2
+            className="hero_title"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
             <span className="highlight">Transformamos</span> el Acceso a Crédito
             para las Empresas
-          </h2>
-          <p className="hero_subtitle" data-aos="fade-up">
+          </motion.h2>
+
+          {/* Subtítulo con delay */}
+          <motion.p
+            className="hero_subtitle"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+          >
             Nuestra plataforma impulsa el crecimiento de las PYMEs más
             innovadoras a través de soluciones de{" "}
             <span className="green-highlight">Crédito y Leasing</span>.
-          </p>
-          <div className="hero_cta" data-aos="fade-up">
-            <button
-              className="hero_btn secondary"
+          </motion.p>
+
+          {/* Botón CTA con efecto de pulso */}
+          <motion.div
+            className="hero_cta"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+          >
+            <motion.button
+              className="hero_btn primary"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() =>
                 document
                   .getElementById("productos")
@@ -127,16 +160,36 @@ const Home = () => {
               }
             >
               Explora Soluciones
-            </button>
-          </div>
-        </div>
+            </motion.button>
+          </motion.div>
 
-        {/* Fondo interactivo */}
-        <div className="hero_background">
-          <div className="node node-1"></div>
-          <div className="node node-2"></div>
-          <div className="line line-1"></div>
-          <div className="line line-2"></div>
+          {/* 🔽 IMÁGENES BAJO EL BOTÓN */}
+          <div className="hero_images_container">
+            <motion.img
+              src={step1} // Imagen 1
+              alt="Paso 1"
+              className="hero_timeline_img"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 1 }}
+            />
+            <motion.img
+              src={step2} // Imagen 2
+              alt="Paso 2"
+              className="hero_timeline_img"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4, duration: 1 }}
+            />
+            <motion.img
+              src={step3} // Imagen 3
+              alt="Paso 3"
+              className="hero_timeline_img"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.6, duration: 1 }}
+            />
+          </div>
         </div>
       </header>
 

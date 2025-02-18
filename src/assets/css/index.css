@@ -81,6 +81,7 @@ body {
 }
 
 /* =================== HERO SECTION =================== */
+/* =================== HERO SECTION =================== */
 .hero_section {
   display: flex;
   flex-direction: column;
@@ -94,194 +95,142 @@ body {
   overflow: hidden;
 }
 
+/* Estilo de partículas (tsparticles) */
+#tsparticles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Contenido Hero */
 .hero_content {
   max-width: 900px;
   z-index: 2;
+  position: relative;
 }
 
 .hero_title {
-  margin-bottom: 1.5rem;
-  font-family: "Montserrat", sans-serif;
   font-size: 4rem;
   font-weight: bold;
   color: #003b80;
+  text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
 }
 
 .hero_subtitle {
-  margin-bottom: 2.5rem;
-  font-family: "Lato", sans-serif;
   font-size: 1.5rem;
   line-height: 1.6;
   color: #1e2a38;
+  margin-bottom: 2rem;
 }
 
-.hero_cta {
-  margin-top: 1rem;
+/* Contenedor de imágenes en la sección Hero */
+.hero_images_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 40px; /* Espaciado debajo del botón */
 }
 
+/* Estilos generales de imágenes */
+.hero_timeline_img {
+  width: 160px; /* Tamaño más grande */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Efecto hover */
+.hero_timeline_img:hover {
+  transform: scale(1.15); /* Aumenta más en hover */
+  box-shadow: 0px 10px 25px rgba(22, 199, 154, 0.6);
+}
+/* Botón con animación de pulso */
 .hero_btn {
-  padding: 14px 40px;
-  font-size: 1.3rem;
-  border-radius: 30px;
-  font-family: "Nunito", sans-serif;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease,
-    transform 0.3s ease;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Fondo transparente con Glassmorphism */
+  backdrop-filter: blur(10px); /* Difuminado */
+  border-radius: 15px;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+.hero_btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
 }
 
 .hero_btn.primary {
-  background-color: #16c79a;
+  background: linear-gradient(90deg, #16c79a, #13a67f);
   color: #ffffff;
   box-shadow: 0 8px 20px rgba(22, 199, 154, 0.3);
+  animation: pulse 1.5s infinite;
 }
 
 .hero_btn.primary:hover {
-  background-color: #0aa676;
+  background: linear-gradient(90deg, #13a67f, #16c79a);
+  transform: scale(1.05);
   box-shadow: 0 12px 24px rgba(10, 166, 118, 0.4);
-  transform: translateY(-2px);
 }
 
-.hero_btn.secondary {
-  background-color: transparent;
-  border: 2px solid #16c79a;
-  color: #16c79a;
-}
-
-.hero_btn.secondary:hover {
-  background-color: #16c79a;
-  color: #ffffff;
-}
-
-.hero_background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.node {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color: #16c79a;
-  border-radius: 50%;
-  animation: floatNode 5s infinite alternate ease-in-out;
-}
-
-.node-1 {
-  top: 20%;
-  left: 30%;
-  animation-delay: 0s;
-}
-
-.node-2 {
-  top: 70%;
-  left: 60%;
-  animation-delay: 2s;
-}
-
-.line {
-  position: absolute;
-  width: 2px;
-  height: 100%;
-  background: rgba(0, 59, 128, 0.1);
-  animation: moveLine 6s infinite linear;
-}
-
-.line-1 {
-  left: 20%;
-}
-
-.line-2 {
-  left: 70%;
-  animation-delay: 3s;
-}
-
-@keyframes floatNode {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes moveLine {
+/* Animación de pulso */
+@keyframes pulse {
   0% {
-    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(22, 199, 154, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(22, 199, 154, 0.8);
   }
   100% {
-    transform: translateY(-100%);
+    box-shadow: 0 0 15px rgba(22, 199, 154, 0.5);
   }
 }
 
 /* Estilos específicos para dispositivos con ancho máximo de 768px (tablets y móviles) */
 @media screen and (max-width: 768px) {
   .hero_section {
-    height: 70vh; /* Reduce la altura al 70% de la pantalla */
-    padding: 0 1rem; /* Reduce el padding lateral */
+    height: 80vh;
   }
 
   .hero_title {
-    font-size: 2.5rem; /* Reduce el tamaño de la fuente del título */
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
   }
 
   .hero_subtitle {
-    font-size: 1.2rem; /* Reduce el tamaño de la fuente del subtítulo */
-    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
   }
 
-  .hero_btn {
-    padding: 10px 30px; /* Ajusta el padding del botón */
-    font-size: 1rem; /* Reduce el tamaño de la fuente del botón */
+  .hero_timeline_img {
+    width: 180px;
   }
 }
 
 /* Estilos específicos para dispositivos con ancho máximo de 480px (móviles pequeños) */
 @media screen and (max-width: 480px) {
   .hero_section {
-    height: 60vh; /* Reduce aún más la altura */
-    padding: 0 0.5rem; /* Reduce el padding lateral */
+    height: 70vh;
   }
 
   .hero_title {
-    font-size: 2rem; /* Reduce el tamaño de la fuente del título */
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
   }
 
-  .hero_subtitle {
-    font-size: 1rem; /* Reduce el tamaño de la fuente del subtítulo */
-    margin-bottom: 1rem;
+  .hero_timeline_img {
+    width: 140px;
   }
-
-  .hero_btn {
-    padding: 8px 20px; /* Ajusta el padding del botón */
-    font-size: 0.9rem; /* Reduce el tamaño de la fuente del botón */
-  }
-}
-
-/* Botón general */
-.btn-primary {
-  align-items: center;
-  background: linear-gradient(90deg, #16c79a, #13a67f);
-  border: none;
-  padding: 12px 25px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 50px;
-  color: white;
-  box-shadow: 0 4px 10px rgba(22, 199, 154, 0.3);
-  transition: all 0.3s ease-in-out;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(90deg, #13a67f, #16c79a);
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(22, 199, 154, 0.5);
 }
 
 /* =================== SECCIONES GENERALES =================== */
@@ -461,20 +410,16 @@ body {
 /* =================== PRODUCTOS SECTION =================== */
 .productos-card {
   background: linear-gradient(145deg, #dff3f5, #bfe4e7);
-  border: none;
+  backdrop-filter: blur(10px);
   border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  height: 280px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .productos-card:hover {
-  transform: scale(1.025);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 25px rgba(255, 107, 107, 0.6);
+  transform: scale(1.05);
 }
 
 .productos-card .icono {
