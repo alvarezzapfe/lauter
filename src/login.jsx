@@ -18,8 +18,7 @@ const Login = () => {
   };
 
   // Cambiar la URL base para producción
-  const BASE_URL =
-    process.env.REACT_APP_API_URL || "https://lauter.vercel.app/api";
+  const BASE_URL = import.meta.env.VITE_API_URL || "https://lauter.vercel.app";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
