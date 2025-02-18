@@ -10,11 +10,12 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: "mysql",
+    dialectModule: require("mysql2"), // 🔹 Esto es necesario en Vercel
     port: process.env.DB_PORT || 3306,
-    logging: false, // 🔴 Apagar logs en producción para evitar spam
+    logging: false,
     dialectOptions: {
       ssl: {
-        rejectUnauthorized: false, // Desactiva la verificación de certificados
+        rejectUnauthorized: false,
       },
     },
   }
