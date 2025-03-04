@@ -25,12 +25,8 @@ import ProtectedRoute from "./ProtectedRoute"; // Ajusta la ruta según dónde c
 import AccessDenied from "./AccessDenied"; // Ajusta la ruta según la estructura de tu proyecto
 import { motion } from "framer-motion";
 import { FaRegSmile, FaRegFrown, FaRegClock } from "react-icons/fa";
-
+import HeroSection from "./HeroSection"; // ✅ Importación de HeroSection
 import { useCallback } from "react";
-
-import step2 from "./assets/images/step2.jpg"; // Sustituye con tu imagen real
-import step1 from "./assets/images/step1.jpg"; // Imagen 1
-import step3 from "./assets/images/step3.jpg"; // Imagen 3
 
 const Home = () => {
   const [activeCard, setActiveCard] = useState(-1); // Caja activa para animaciones
@@ -114,85 +110,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-
-      <header id="hero" className="hero_section">
-        {/* Partículas de fondo */}
-
-        <div className="hero_content">
-          {/* Título con animación */}
-          <motion.h2
-            className="hero_title"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <span className="highlight">Transformamos</span> el Acceso a Crédito
-            para las Empresas
-          </motion.h2>
-
-          {/* Subtítulo con delay */}
-          <motion.p
-            className="hero_subtitle"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-          >
-            Nuestra plataforma impulsa el crecimiento de las PYMEs más
-            innovadoras a través de soluciones de{" "}
-            <span className="green-highlight">Crédito y Leasing</span>.
-          </motion.p>
-
-          {/* Botón CTA con efecto de pulso */}
-          <motion.div
-            className="hero_cta"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-          >
-            <motion.button
-              className="hero_btn primary"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() =>
-                document
-                  .getElementById("productos")
-                  .scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Explora Soluciones
-            </motion.button>
-          </motion.div>
-
-          {/* 🔽 IMÁGENES BAJO EL BOTÓN */}
-          <div className="hero_images_container">
-            <motion.img
-              src={step1} // Imagen 1
-              alt="Paso 1"
-              className="hero_timeline_img"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 1 }}
-            />
-            <motion.img
-              src={step2} // Imagen 2
-              alt="Paso 2"
-              className="hero_timeline_img"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 1 }}
-            />
-            <motion.img
-              src={step3} // Imagen 3
-              alt="Paso 3"
-              className="hero_timeline_img"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6, duration: 1 }}
-            />
-          </div>
-        </div>
-      </header>
-
+      <HeroSection /> {/* ✅ Uso del nuevo componente */}
       {/* Sección Acerca de - About Section */}
       <section id="about" className="about-section">
         <div className="container">
@@ -224,6 +142,16 @@ const Home = () => {
                 <strong> 1 hasta 100 millones de pesos MXN</strong>, adaptadas a
                 las necesidades de crecimiento de cada negocio.
               </p>
+
+              {/* Definición de Lauter */}
+              <p className="about-text lauter-definition">
+                <strong className="green-highlight">Lauter</strong>: proviene
+                del alemán y significa{" "}
+                <strong className="green-highlight">sincero, honesto</strong>
+                (del alemán "lauter", que denota pureza y transparencia en su
+                significado original).
+              </p>
+
               <button className="btn btn-primary about-btn">
                 Descubre Más
               </button>
@@ -241,7 +169,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/*    */}
       {/* Sección Productos */}
       <section id="productos" className="section-container productos-section">
@@ -298,7 +225,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/*    */}
       <section id="comparativo" className="comparativo-section">
         <div className="container">
@@ -344,13 +270,13 @@ const Home = () => {
                     handleCellClick("Tasa de interés desde el 12%.")
                   }
                 >
-                  12-15%
+                  17.5-28%
                 </td>
                 <td onClick={() => handleCellClick("Tasas superiores al 25%.")}>
-                  25%+
+                  45%+
                 </td>
                 <td onClick={() => handleCellClick("Tasa de 20-25%.")}>
-                  20-25%
+                  25-35%
                 </td>
               </tr>
               <tr>
@@ -410,7 +336,6 @@ const Home = () => {
           )}
         </div>
       </section>
-
       {/*  Sección Columnas  */}
       <section id="columns" className="py-5 text-center" data-aos="fade-up">
         <div className="container expanded-section position-relative">
@@ -560,7 +485,7 @@ const Home = () => {
               {
                 question: "¿Qué tasas de interés manejan?",
                 answer:
-                  "Depende del perfil de riesgo, pero ofrecemos tasas desde el 12% anual.",
+                  "Depende del perfil de riesgo, pero ofrecemos tasas desde el 17% anual.",
               },
               {
                 question: "¿Cómo se paga el crédito?",
@@ -575,7 +500,7 @@ const Home = () => {
               {
                 question: "¿Tienen restricciones por industria?",
                 answer:
-                  "No financiamos empresas relacionadas con financiamiento, criptomonedas o armas.",
+                  "No financiamos empresas relacionadas con financiamiento, casinos, criptomonedas o armas.",
               },
               {
                 question: "¿Qué pasa si no puedo pagar?",
@@ -606,7 +531,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="footer-section text-dark">
         <div className="container">
@@ -623,13 +547,14 @@ const Home = () => {
             <div className="col-md-3">
               <h5>Contacto</h5>
               <p>Tel: +52 55 5551609091</p>
-              <p>Email: contacto@i2.com.mx</p>
+              <i className="fas fa-envelope"></i>
+              <p>Email: contacto@lauter.mx</p>
+              <i className="fas fa-home"></i>
               <p>Dirección:</p>
               <p>
                 Tiburcio Montiel 89, Colonia San Miguel Chapultepec, Miguel
                 Hidalgo, C.P. 11850, Ciudad de México, México.
               </p>
-              <i className="fas fa-globe"></i>
             </div>
 
             {/* Enlaces */}
@@ -675,16 +600,6 @@ const Home = () => {
               <ul className="list-unstyled">
                 <li>
                   <a
-                    href="https://www.pimx.com.mx"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="footer-link"
-                  >
-                    PiMX
-                  </a>
-                </li>
-                <li>
-                  <a
                     href="https://www.crowdlink.mx"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -726,8 +641,8 @@ const Home = () => {
             <div className="col text-center">
               <p className="small">
                 Infraestructura en Finanzas AI, Sociedad Anónima Promotora de
-                Inversión de Capital Variable, (""), para su constitución y
-                operación con tal carácter, no requiere de autorización de la
+                Inversión de Capital Variable, ("Lauter"), para su constitución
+                y operación con tal carácter, no requiere de autorización de la
                 Secretaría de Hacienda y Crédito Público.©. Todos los derechos
                 reservados. Prohibida la reproducción total o parcial del
                 contenido de este sitio. * Todo el análisis es generado con

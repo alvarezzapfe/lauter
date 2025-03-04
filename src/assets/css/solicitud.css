@@ -150,24 +150,22 @@
 }
 
 /* ================== Preoferta ================== */
-/* ================== Preoferta - Paso 5 (Diseño más compacto) ================== */
+/* ================== Preoferta (Case 5) ================== */
 .preoferta-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   background: linear-gradient(145deg, #1b1f3b, #2c3e50);
-  padding: 20px; /* Reducir padding */
+  padding: 25px;
   border-radius: 15px;
-  width: 85%; /* Hacerlo más compacto */
+  width: 90%;
   margin: auto;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-  position: relative;
-  overflow: hidden;
   color: #ffffff;
 }
 
 .preoferta-title {
-  font-size: 1.5rem; /* Reducir tamaño del título */
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -175,24 +173,30 @@
   letter-spacing: 1.2px;
 }
 
-/* Diseño para las ofertas */
+.preoferta-message {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #16c79a;
+}
+
+/* Diseño de las ofertas */
 .preoferta-grid {
   display: flex;
-  justify-content: space-evenly; /* Compactar mejor las cajas */
+  justify-content: space-evenly;
   width: 100%;
-  gap: 15px; /* Reducir espacio entre tarjetas */
+  gap: 15px;
 }
 
 .preoferta-item {
   background: #ffffff;
   border: 2px solid;
-  padding: 12px; /* Reducir padding */
-  border-radius: 10px; /* Menos redondeado */
-  width: 220px; /* Disminuir tamaño de la caja */
+  padding: 15px;
+  border-radius: 12px;
+  width: 220px;
   text-align: center;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   color: #000;
-  position: relative;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -202,13 +206,49 @@
 }
 
 .tasa-label {
-  font-size: 1rem; /* Reducir tamaño de la tasa */
+  font-size: 1rem;
   font-weight: bold;
   color: #ffffff;
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
   display: inline-block;
   margin-bottom: 8px;
+}
+
+/* loading container  */
+
+/* ================== Loading (Case 4) ================== */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #16c79a;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 1rem;
+  color: #16c79a;
+  margin-top: 10px;
 }
 
 /* ================== Footer ================== */

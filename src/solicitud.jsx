@@ -4,9 +4,6 @@ import Navbar from "./components/Navbar";
 import "./assets/css/solicitud.css";
 import logo from "./assets/images/logo1.png";
 
-// Definimos la URL base de la API
-const BASE_URL = `${window.location.origin}/api`; // Ruta relativa
-
 const Solicitud = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -449,7 +446,7 @@ const Solicitud = () => {
                   required
                 >
                   <option value="">Selecciona</option>
-                  <option value="Fondo Deuda PiMX">Fondo Deuda PiMX</option>
+                  <option value="Fondo Deuda PiMX">Sofom</option>
                   <option value="Crowdlink">Crowdlink</option>
                 </select>
               </div>
@@ -485,30 +482,63 @@ const Solicitud = () => {
             <button
               type="button"
               className="btn-submit"
-              onClick={handleSubmit} // Llamamos a handleSubmit antes de avanzar al paso 5
+              onClick={() => {
+                setLoading(true);
+                setTimeout(() => setStep(5), 3000); // Simulamos carga antes de preoferta
+              }}
               disabled={loading}
             >
               {loading ? "Procesando..." : "Confirmar y Enviar"}
             </button>
+
+            {loading && (
+              <div className="loading-container">
+                <div className="loading-spinner"></div>
+                <p className="loading-text">Generando preoferta...</p>
+              </div>
+            )}
           </div>
         );
 
       case 5:
         const monto = parseFloat(formData.montoCredito.replace(/,/g, ""));
         const plazo = parseInt(formData.plazo);
+
+        // Función para generar un número aleatorio en un rango dado
+        const getRandomRate = (min, max) =>
+          (Math.random() * (max - min) + min).toFixed(1);
+
+        // Generamos tasas aleatorias dentro de los rangos especificados
         const tasas = [
-          { nombre: "Mejor Tasa", tasa: 0.19, color: "#16c79a" }, // Verde
-          { nombre: "Tasa Mediana", tasa: 0.235, color: "#ffcc00" }, // Amarillo
-          { nombre: "Tasa Más Alta", tasa: 0.35, color: "#ff4d4d" }, // Rojo
+          {
+            nombre: "Tasa Preferencial",
+            tasa: getRandomRate(17.5, 21.5),
+            color: "#16c79a", // Verde
+          },
+          {
+            nombre: "Tasa Estándar",
+            tasa: getRandomRate(25, 29),
+            color: "#f48fb1", // Rosa
+          },
         ];
 
         return (
           <div className="preoferta-container">
-            <h3 className="preoferta-title">🏦 Tu Preoferta de Crédito</h3>
+            <h3 className="preoferta-title"> Tu Preoferta de Crédito</h3>
+            <p className="preoferta-message">
+              El equipo de <strong>Lauter</strong> se pondrá en contacto para
+              pedir más información.
+              <br />
+              Si no recibes contacto, puedes escribirnos a{" "}
+              <strong>contacto@lauter.mx</strong>
+            </p>
+
             <div className="preoferta-grid">
               {tasas.map((opcion, index) => {
-                const interesTotal = monto * opcion.tasa;
+                const tasaDecimal = opcion.tasa / 100;
+                const interesTotal = monto * tasaDecimal;
                 const pagoMensual = (monto + interesTotal) / plazo;
+
                 return (
                   <div
                     key={index}
@@ -520,7 +550,7 @@ const Solicitud = () => {
                       className="tasa-label"
                       style={{ background: opcion.color }}
                     >
-                      Tasa: <strong>{(opcion.tasa * 100).toFixed(2)}%</strong>
+                      Tasa: <strong>{opcion.tasa}%</strong>
                     </p>
                     <p>
                       Monto Total:{" "}
@@ -541,6 +571,7 @@ const Solicitud = () => {
                 );
               })}
             </div>
+
             <div className="snake-line"></div>
           </div>
         );
